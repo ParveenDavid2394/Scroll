@@ -15,6 +15,22 @@ const links = document.querySelector('.links');
 navToggle.addEventListener('click', ()=>{
     // old method -> ok can use simple and easy but not dynamic
     // linksContainer.classList.toggle('show-links')
+
+    // get the height of the parent div, links-container
+    const containerHeight = linksContainer.getBoundingClientRect().height;
+
+    // get height of links in links-container
+    const linksHeight = links.getBoundingClientRect().height;
+
+    // now set height of links to the parent div if links-container height =0
+    // default state
+    if (containerHeight === 0) {
+        linksContainer.style.height = `${linksHeight}px`;
+    }
+
+    else{
+        linksContainer.style.height = 0;
+    }
 })
 // ********** fixed navbar ************
 
