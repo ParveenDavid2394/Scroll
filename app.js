@@ -57,3 +57,42 @@ window.addEventListener('scroll', () => {
 
 // ********** smooth scroll ************
 // select links
+const scrollLinks = document.querySelectorAll('.scroll-link');
+
+scrollLinks.forEach( (link) => {
+
+    link.addEventListener('click', (e)=>{
+        // prevent default behaviour
+        e.preventDefault();
+
+        // navigate to specific spot
+        const id = link.getAttribute('href').slice(1);
+        const element = document.getElementById(id);
+
+        const navBarHeight = navBar.getBoundingClientRect().height;
+        const containerHeight = linksContainer.getBoundingClientRect().height;
+        const fixedNav = navBar.classList.contains('fixed-nav');
+
+        // get top position of the element
+        let position = element.offsetTop - navBarHeight;
+
+        // if fixedBar is true, then subtract more
+        if (!fixedNav) {
+            position = position - navBarHeight;
+        }
+
+        // only applied when toggle button appears
+        if (window.outerWidth < 800){
+            position = position + containerHeight;
+        }
+
+        // set position when link is clicked
+        window.scrollTo({
+            left: 0,
+            top: position
+        });
+
+        // close toggle nav bar once link is clicked
+        linksContainer.style.height = 0;
+    })
+})
