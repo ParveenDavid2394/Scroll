@@ -81,10 +81,18 @@ scrollLinks.forEach( (link) => {
             position = position - navBarHeight;
         }
 
+        // this is also acceptable ( method shown by teacher)
+        // if(navBarHeight > 90){
+        //      position = position + containerHeight;
+        // }
+
+        // this and the method above do the same thing, but this one i figured out myself
         // only applied when toggle button appears
         if (window.outerWidth < 800){
             position = position + containerHeight;
         }
+
+        console.log(navBarHeight);
 
         // set position when link is clicked
         window.scrollTo({
